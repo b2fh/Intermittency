@@ -26,13 +26,17 @@ The temperature field can be integrated along the line of sight
 \begin{equation}
 T({\mathbf{n}}) = \int S_T(\mathbf{k}, \chi) e^{i \mathbf{k}\cdot\mathbf{n} \chi}\zeta_{\mathbf{k}}\frac{d^3k}{(2\pi)^3}, \label{eq:Tint1}
 \end{equation}
-where $S(\mathbf{k}, \chi)$ is the source function that can be computed using a boltzmann code.
+where $S(\mathbf{k}, \chi)$ is the source function that can be computed using a Boltzmann code.
 
 Plugging \eqref{eq:zetakint} and \eqref{eq:eikx_expand} into \eqref{eq:Tint1}, we obtain the desired expression
 \begin{equation}
-a_{lm}^T = \int_0^\infty r^2dr \zeta_{lm}(r) F^T_l(r),
+a_{lm}^T = \int_0^\infty r^2dr \zeta_{lm}(r) F^T_l(r), \label{eq:Tint2}
 \end{equation}
 where
 \begin{equation}
-F^T_l(r) = \frac{2}{\pi} \int k^2dk j_l(kr) \int d\chi S_T(k, \chi) j_l(k\chi) \, .
+F^T_l(r) = \frac{2}{\pi} \int k^2dk j_l(kr) \int d\chi S_T(k, \chi) j_l(k\chi) \, . \label{eq:FTint}
 \end{equation}
+
+Although it seems to be profitable to convert the 3D integral \eqref{eq:Tint2} to 2D by first integrating over $\chi$ in \eqref{eq:FTint}, practically it is not the case. Because the source $S(k, \chi)$ is relatively smooth, it acts as a low-pass filter on the product of bessel functions $j_l(kr)j_l(k\chi)$. The numerical accuracy can be greately enhanced by doing a WKB expansion of $j_l(kr)j_l(k\chi)$ and keeping only the low frequency part of it. The high frequency part of $j_l(kr)j_l(k\chi)$ only adds noises which average to zero. In other words, $k$ direction is the proper direction to analyse the convergence of the integral. We can analytically remove the large but periodic oscillatory noises in $k$ direction to achieve a much faster convergence.
+
+
