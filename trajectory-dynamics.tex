@@ -1,4 +1,107 @@
-\section{Dynamics of Trajectories in Phase Space and Caustics}
+\section{Effective One-Particle Dynamics, Phase Space Trajectories and Singular Embeddings}
+In the ballistic regime we treat the field values at each individual lattice site independently.
+Ultimately, observations will be tied to quantities averaged over many post-inflationary Hubble volumes, and therefore do not require detailed knowledge of the fine-grained dynamics of the phase space trajectories at each point in space.
+This allows us to extract all relevant quantities from the effective one-particle phase space, and we may consider the motion of bundles of trajectories rather than full lattice simulations.
+
+Spatial averages are replaced by integrals over effective one-particle probability distributions
+\begin{equation}
+  \langle\mathcal{O}\rangle_V \equiv \frac{1}{V}\int_V \mathcal{O}(x) d^dx \to \int d\mathcal{O} \mathcal{P}_{\mathcal{O}}(\mathcal{O},t)\mathcal{O} = \int d\qc \mathcal{P}_\qc(\qc,t)\mathcal{O}(\qc) \, .
+\end{equation}
+The phase-space probability distribution $\mathcal{P}(\qc,t)$ at any time $t$ is related to the initial distribution $\mathcal{P}(\qc,t_0)$ by
+\begin{equation} \label{eqn:probability-transport}
+  \mathcal{P}(\qc_f,t_f) = \int d\qc_0\delta\left(\qc_f-\qc(t|\qc_0)\right)\mathcal{P}(\qc_0,t_0) \, .
+\end{equation}
+{\bf Initial distribution comes from statistics of initial field distribution.  Expand on this point}
+The field dynamics enters only in the evolution of a trajectory from an initial point in phase space $\qc(t|\qc_0)$.
+The statistics of the initial field distribution are encoded entirely in $\mathcal{P}(\qc_0,t_0)$.
+{\bf Brief description of the relationship between the one-particle PDF and the initial field statistics.  Give general description and also special case of a Gaussian Random Field.}
+We are thus free to describe the dynamics either in terms of individual lattice trajectories (the Langrangian approach, or Langevin approach for stochastic dynamics),
+or else in terms of the processed probability distributions (the Eulerian approach, or Fokker-Planck approach for stochastic dynamics).
+
+From~\eqref{eqn:probability-transport}, we immediately have
+\begin{equation}
+  \mathcal{P}(\qc_f,t) = \int_{\qc(t|\qc_0)=\qc_f}d\qc_0 \left|\frac{\partial\qc(t|\qc_0)}{\partial\qc_0} \right|^{-1} \mathcal{P}(\qc_0,t_0)
+\end{equation}
+In general, $\qc_0 = \qc^{-1}(t|\qc_f)$ may have multiple solutions as a function of $\qc_0$, leading to a sum over multiple ``streams'' in the above integral (or an integral over a continuous parameter in the case that the solutions are not discrete.
+{\bf Show some special cases}
+
+Usually we are interested in the projection into some lower dimensional space $\vec{\mathcal{O}}(\qc)$ rather than the full phase-space dynamics of the system.
+{\bf or else the distribution in nonCanonical coordinates, or even in some higher dimensional space ...}
+The corresponding probability density in the reduced space is
+\begin{equation}
+  \mathcal{P}_{\vec{\mathcal{O}}}(\vec{\mathcal{O}}_f,t) = \int d\qc \delta(\vec{\mathcal{O}}_f-\vec{\mathcal{O}}(\qc))) \mathcal{P}(\qc,t)
+\end{equation}
+{\bf Go through the details of this}
+
+If we consider flows that preserve phase-space volume (such as those in a canonical Hamiltonian system), then the Jacobian determinant is constant in time.
+However, if we consider projections down to lower dimensional spaces, choices of non-canonical variables, or ``cold'' initial conditions restricted to some submanifold of phase space,
+then the mapping from initial positions to final phase space locations along the trajectories may develop singularities (known as caustics {\bf catastrophes?}) where the Jacobian determinant is $0$.  This results in a singularity in the final probability distribution function in the projected subspace, which can provide the dominant contribution to expectation values.
+Physically, a caustic occurs from a focussing of trajectories in the reduced phase space.  In the original field theory, this corresponds to a collection of neighbouring lattice sites all undergoing nearly identical evolutions, and a corresponding spatially coherent feature forming.
+
+For highly mixed trajectories, we expect initial bundles that avoid caustics to average out and produce the mean expansion history.  However, for bundles centered on special initial values that result in a caustic in $\ln a$, many of the individual trajectories will add coherently into the smoothed expansion history resulting in a spike in $\zeta$. {\bf Figure out where this idea belongs.}
+
+\subsection{General Description of Trajectory Dynamics, Singular Embeddings of Lagrangian Submanifolds, etc.}
+
+\subsection{Geodesic Deviation Equation and Caustic Formation}
+To identify the formation of caustics, it is convenient to consider the time-evolution of the deviation between two infinitesimally separated trajectories
+\begin{equation}
+  \delta\qc(t|\qc_0) \equiv \qc(t|\qc_0+\delta\qc_0) - \qc(t|\qc_0)
+\end{equation}
+which can be expanded for infinitesimal initial perturbations $\delta\qc_0$ as
+\begin{equation}
+  \delta\qc(t|\qc_0) = \frac{\partial \qc}{\partial \qc_0}\bigg|_{\qc(t|\qc_0)}\cdot\delta\qc_0 \equiv {\bf D}\cdot\delta\qc_0
+\end{equation}
+or in component notation
+\begin{equation}
+  \delta q_i(t|\qc_0) = \frac{\partial q_i}{\partial q_{0,j}}\bigg|_{\qc(t|\qc_0)}\delta q_{0,j} \equiv D_{ij}\delta q_{0,j}
+\end{equation}
+{\bf Ok, if we have a zero direction, presumably this means we should actually go to next order in the perturbations.  Similar to checking for marginal operators in renormalisation}
+For an autonomous system, the equations of motion for the phase space vector are given by
+\begin{equation}
+  \dot{\qc} = {\bf F}(\qc) \, .
+\end{equation}
+{\bf We could remove zeta as a dependent variable and make it non-autonomous?  Then we have the view of carrying zeta around with us, kind of like an entropy associated with the trajectory.}
+In the limit of infinitesimal initial perturbations we have
+\begin{equation}
+  \delta\dot{\qc} = \dot{\qc}(t|\qc_0+\delta\qc_0) - \dot{\qc}(t|\qc_0) = {\bf F}(\qc(t|\qc_0+\delta\qc_0)) - {\bf F}(\qc(t|\qc_0)) = \frac{\partial {\bf F}}{\partial \qc}\cdot\delta\qc_0
+\end{equation}
+
+From this, we obtain an equation of motion for the deviation tensor
+\begin{equation}
+  \dot{D} = \frac{\partial{\bf F}}{\partial\qc}\cdot {\bf d} \equiv {\bf T}\cdot {\bf D}
+\end{equation}
+or in a coordinate basis defined by a choice of canonical coordinates
+\begin{equation}
+  \dot{D}_{ij} = \frac{\partial F_i}{\partial q_l}D_{lj}\equiv T_{il}D_{lj}
+\end{equation}
+
+\subsection{Specialisation to Hamiltonian Systems in Canonical Coordinates}
+For a Hamiltonian system expressed in terms of a canonical set of phase space coordinates, we can divide our $2N$ phase space coordinates into $N$ generalised position and $N$ generalised momentum coordinates $\qc = \left({\bf r},{\bf \pi}\right)$ with corresponding equations of motion
+\begin{equation}
+  \frac{d {\bf r}}{dt} = \frac{\partial\mathcal{H}}{\partial {\bf \pi}} \qquad \frac{d{\bf \pi}}{dt} = -\frac{\partial \mathcal{H}}{\partial {\bf r}}
+\end{equation}
+so we see the tidal tensor is closely related to the Hessian of the Hamiltonian function in canonical coordinate space
+\begin{equation}
+  T_{ij} = J_{ik} \frac{\partial \mathcal{H}}{\partial q_k\partial q_j} \qquad J = \left[\begin{array}{cc} 0 & \mathbb{I} \\ \mathbb{I} & 0 \end{array}\right]
+\end{equation}
+Using the identity $\ln\mathrm{det}D = \mathrm{Tr}\ln D$, is is straightforward to see that the determinant of $D$ is time-independent provided $D$ is invertible initially.
+This just corresponds to the preservation of phase-space volume by the Hamiltonian flow.
+
+\subsection{Projection onto Reduced Initial Condition Phase Space}
+\begin{itemize}
+\item Include some narrow Gaussian width in various IC directions
+\item Introduce bred vectors, etc. as the important thing to pick out relevant directions
+\end{itemize}
+
+\subsection{Additional Things to Mention}
+\begin{itemize}
+\item Bred vectors
+\item Equivalent of Zel'dovich approximation?
+\item zero-mode instability is important for this picture
+\item Analytic calculation of caustics in phase space?
+\end{itemize}
+
+\subsection{Brief reminder of stuff: To be removed}
 Several regimes to consider
 \begin{itemize}
 \item Classical motion with stochastic noise term.  Occurs while inflating and subhorizon modes cross the horizon.
@@ -7,8 +110,3 @@ Several regimes to consider
 \item Post-inflation can extend the decoupled trajectories approximation into the subhorizon regime, in the limit that the zero mode is unstable (and continuity for k small, so those modes are also unstable)
 \item Fully mode-mode coupled inhomogeneous evolution.
 \end{itemize}
-
-\subsection{General Description of Trajectory Dynamics, Singular Embeddings of Lagrangian Submanifolds, etc.}
-
-\subsection{Conversion of Ballistic Trajectories into Three-Dimensional Dynamics}
-{\bf This is basically the description in terms of PDFs}
