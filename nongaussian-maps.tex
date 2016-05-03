@@ -4,3 +4,35 @@
 \item Description of how to do marginalisation from coarse-grained distribution (ie. smoothed over a Hubble at the end of inflation) to pixels in CMB of LSS
 \item T and E maps from generalised local nonGaussianity
 \end{itemize}
+
+For an observer,  the primordial comoving curvature fluctuations  $\zeta$ can be expanded in spherical coordinate 
+\begin{equation}
+  \zeta(r, \mathbf{n}) = \sum_{lm} Y_{lm}(\mathbf{n})\zeta_{lm}(r),
+\end{equation}
+where $r$ is the distance from the observer and $\mathbf{n} = (\theta, \phi)$ the line of sight direction.
+
+ For a comoving wave number $\mathbf{k}$, the Fourier mode $\zeta_{\mathbf{k}}$ can be written as
+\begin{equation}
+  \zeta_{\mathbf{k}} = 4\pi \int_0^\infty r^2dr\sum_{lm}\zeta_{lm}(r) (-i)^l j_l(kr) Y_{lm}(\hat{\mathbf{k}})\, , \label{eq:zetakint}
+\end{equation}
+where we have used the identity
+\begin{equation}
+  e^{i\mathbf{k}\cdot\mathbf{n}r} = 4\pi \sum_{lm}i^l j_l(kr) Y^*_{lm}(\hat{\mathbf{k}}) Y_{lm}(\mathbf{n}) \, , \label{eq:eikx_expand}
+\end{equation}
+and orthogonality of $Y_{lm}$ functions.
+
+
+The temperature 
+\begin{equation}
+T({\mathbf{n}}) = \int S_T(\mathbf{k}, \chi) e^{i \mathbf{k}\cdot\mathbf{n} \chi}\zeta_{\mathbf{k}}\frac{d^3k}{(2\pi)^3}, \label{eq:Tint1}
+\end{equation}
+where $S(\mathbf{k}, \chi)$ is the source function that can be computed using a boltzmann code.
+
+Plugging \eqref{eq:zetakint} and \eqref{eq:eikx_expand} into \eqref{eq:Tint1}, we obtain the desired expression
+\begin{equation}
+a_{lm}^T = \int_0^\infty r^2dr \zeta_{lm}(r) F^T_l(r),
+\end{equation}
+where
+\begin{equation}
+F^T_l(r) = \frac{2}{\pi} \int k^2dk j_l(kr) \int d\chi S_T(k, \chi) j_l(k\chi) \, .
+\end{equation}
