@@ -1,0 +1,8 @@
+# ignore auxiliary LaTeX files
+*.aux
+*.log
+*.out
+*.toc
+
+# we don’t want main article PDF either
+ballistics.pdf
