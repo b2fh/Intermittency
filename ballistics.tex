@@ -10,7 +10,7 @@
 \begin{document}
 
 \title{NonGaussianity From Chaotic Ballistic Trajectories}
-\abstract{BLAH BLAH BLAH}
+\abstract{BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH}
 
 \maketitle
 
@@ -23,49 +23,14 @@
 \section{Introduction}
 BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH
 
-\section{Multiscale Hierarchy and Positions as Billiards}
-Outline the basic scales in the problem and indicate that we have a multiple hierarchies to consider.
-Also explain how we will basically view each spatial position as some individual ballistic trajectory.
-This generalises the philosophy behind the separate universe approximation.
-When going from the smaller length scales back up to larger length scales in the hierarchy, convolutions must be done.
-This allows for entropy generation via coarse-graining.
-The complicated motion of the trajectories then allows for the coarse-graining to in some sense operate very differently in different spatial locations.
-This leads to $\zeta$ perturbations and a relationship to entropy production.
+\input{multiscale-hierarchy}
 
-\begin{figure}
-  \includegraphics[width=0.9\linewidth]{{{multiscale_isocon}}}
-  \caption{Multiscale structure of the isocurvature mode that acts as a modulator for the preheating dynamics.}
-\end{figure}
+\input{lattice-vs-ballistics}
 
-
-{\bf Write this section}
-
-\section{Chaotic Structures in Lattice Simulations and the Ballistic Approximation}
-\begin{itemize}
-\item Show nice figures (ie. the giga-figure) from full lattice simulations
-\item Include the equivalent results if we instead use the ballistic approach to show that they agree.
-\item In the full lattice description, we must track all of the individual lattice sites simultaneously as a very high-dimensional PDF (as an approximation to doing the PDFunctionals for full fields)
-\item The ballistics allows us to reduce the study of this phase space into an extremely reduced phase space where we just need the one-point (joint) PDFs for the variables at each lattice site.  During the ballistic regime, this mapping is rigourous.  In non-ballistic regime will have leakage out of the reduced PDF due to couplings from derivative terms.
-\item Evolving the individual trajectories is the Langevin approach (with no noise term after inflation).  Getting the PDFs is the Fokker-Planck approach.
-\item Mention that this general framework also applies during inflation and provides a nice unification.
-\item Transition in using rest of the paper to explore ballistic dynamics.
-\end{itemize}
-
+\input{trajectory-dynamics}
 \section{Dynamics of Ballistic Trajectories During Preheating}
-Several regimes to consider
-\begin{itemize}
-\item Classical motion with stochastic noise term.  Occurs while inflating and subhorizon modes cross the horizon.
-\item This stage generates the isocurvature mode that allows for the chaotic motion to be realised
-\item Classical decoupled trajectories with no noise term.  After inflation ends, but before onset of strong inhomogeneities from preheating.
-\item Post-inflation can extend the decoupled trajectories approximation into the subhorizon regime, in the limit that the zero mode is unstable (and continuity for k small, so those modes are also unstable)
-\item Fully mode-mode coupled inhomogeneous evolution.
-\end{itemize}
 
-\subsection{General Description of Trajectory Dynamics, Singular Embeddings of Lagrangian Submanifolds, etc.}
-
-\subsection{Conversion of Ballistic Trajectories into Three-Dimensional Dynamics}
-{\bf This is basically the description in terms of PDFs}
-
+\input{preheating-ballistics}
 \section{Creation of Spatially Intermittent Features from Ballistic Trajectory Dynamics} 
 Things to understand
 \begin{itemize}
@@ -121,7 +86,6 @@ This process is illustrated in~\figref{fig:}.
 \end{itemize}
 {\bf Floquet phase of zero mode relies on the conformal rescaling.  However, the bifurcation dynamics does not.}
 
-
 \subsection{Extension to Other Models}
 The inflationary dynamics generating the density perturbations in the CMB can be decoupled from the potential shape during the post-inflation oscillations.
 This will be generic if inflation occurs on a random potential such as in the landscape paradigm.
@@ -147,7 +111,6 @@ However, the higher terms in the Taylor expansion also include contributions to 
 Due to the nice numerical properties of choosing non-monomial potentials as a basis, it is instead nicer to work with a Chebyshev expansion.
 
 \subsection{Include Critical Lines Flowing Into the Minimum}
-
 
 \begin{figure}
   \caption{Various phase space projections of the dynamics.}
@@ -186,6 +149,7 @@ However, similar considerations naturally apply to inflationary dynamics themsel
 In this case, the well-known picture of stochastic inflation {\bf yadda yadda, blah blah}.
 {\bf Expand on how to apply this viewpoint to stochastic inflation as well.}
 
+\input{nongaussian-maps}
 
 \section{Entropy Generation and the Curvature Perturbation}
 The evolution of the large-scale comoving curvature perturbation can be related to the production of entropy in the coarse-grained system.
