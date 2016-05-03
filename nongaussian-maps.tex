@@ -24,9 +24,9 @@ and orthogonality of $Y_{lm}$ functions.
 
 The temperature field can be integrated along the line of sight
 \begin{equation}
-T({\mathbf{n}}) = \int S_T(\mathbf{k}, \chi) e^{i \mathbf{k}\cdot\mathbf{n} \chi}\zeta_{\mathbf{k}}\frac{d^3k}{(2\pi)^3}, \label{eq:Tint1}
+T({\mathbf{n}}) = \int S_T(\mathbf{k}, r') e^{i \mathbf{k}\cdot\mathbf{n} r'}\zeta_{\mathbf{k}}\frac{d^3k}{(2\pi)^3}, \label{eq:Tint1}
 \end{equation}
-where $S(\mathbf{k}, \chi)$ is the source function that can be computed using a Boltzmann code.
+where $S(\mathbf{k}, r')$ is the source function that can be computed using a Boltzmann code.
 
 Plugging \eqref{eq:zetakint} and \eqref{eq:eikx_expand} into \eqref{eq:Tint1}, we obtain the desired expression
 \begin{equation}
@@ -34,10 +34,10 @@ a_{lm}^T = \int_0^\infty r^2dr \zeta_{lm}(r) F^T_l(r), \label{eq:Tint2}
 \end{equation}
 where
 \begin{equation}
-F^T_l(r) = \frac{2}{\pi} \int k^2dk j_l(kr) \int d\chi S_T(k, \chi) j_l(k\chi) \, . \label{eq:FTint}
+F^T_l(r) = \frac{2}{\pi} \int k^2dk j_l(kr) \int dr' S_T(k, r') j_l(kr') \, . \label{eq:FTint}
 \end{equation}
 
-Although it seems to be profitable to convert the 3D integral \eqref{eq:Tint2} to 2D by first integrating over $\chi$ in \eqref{eq:FTint}, practically it is not the case. The method we adopt here is to integrate along $k$ direction first. Because the source $S(k, \chi)$ is relatively smooth, it acts as a low-pass filter on the product of bessel functions $j_l(kr)j_l(k\chi)$. The numeric accuracy can be greately enhanced by doing a WKB expansion of $j_l(kr)j_l(k\chi)$ and keeping only the low frequency part of it. The high frequency part of $j_l(kr)j_l(k\chi)$ adds noises that are amplified by $k^2$ factor at large $k$. These noises, however, are fast-oscillating cosine waves and have negligible contribution to the total integral. The robustness of this method can be tested in two ways. First, we can vary the frequency cutoff for the low-pass filtering and observe the stability of the result. Secondly, we can compare the realized CMB power spectrum $C_l^{TT}$ with its theoretical expectation. 
+Although it seems to be profitable to convert the 3D integral \eqref{eq:Tint2} to 2D by first integrating over $r'$ in \eqref{eq:FTint}, practically it is not the case. The method we adopt here is to integrate along $k$ direction first. Because the source $S(k, r')$ is relatively smooth, it acts as a low-pass filter on the product of bessel functions $j_l(kr)j_l(kr')$. The numeric accuracy can be greately enhanced by doing a WKB expansion of $j_l(kr)j_l(kr')$ and keeping only the low frequency part of it. The high frequency part of $j_l(kr)j_l(kr')$ adds noises that are amplified by $k^2$ factor at large $k$. These noises, however, are fast-oscillating cosine waves and have negligible contribution to the total integral. The robustness of this method can be tested in two ways. First, we can vary the frequency cutoff for the low-pass filtering and observe the stability of the result. Secondly, we can compare the realized CMB power spectrum $C_l^{TT}$ with its theoretical expectation. 
 
 At high resolution ($\ell \gtrsim 1000$) CMB lensing starts to kick in and linear transfer is not sufficiently accurate. We restrict the discussion in this paper to angular scales $\ell \lesssim 1000$ and leave the sophistication beyond linear transfer to our future work.
 
