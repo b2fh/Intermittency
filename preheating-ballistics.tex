@@ -47,30 +47,28 @@ and equations
   \frac{\partial\Pi_a}{\partial\tau}  &= \sum_i\frac{\pi_i^2}{a^3} - a^3V \, .
 \end{align}
 
+{\bf Give a better description of initial conditions}
 To connect to our lattice simulations, we consider the evolution of a collection of decoupled ballistic trajectories.
 These trajectories are centered on the mean values of the fundamental fields in the corresponding lattice simulations, and each one receives a weight corresponding to the probability that the particular value would be realised amongst the subhorizon fluctuations.
 The mean value is drawn from the distribution of superhorizon values $\chi_i$, and each ballistic trajectory is then meant to simulate the evolution of the fields on subhorizon scales.
 Therefore, we can completely specify the relevant initial data .
 For Gaussian subhorizon fluctuations relevant to the case of cosmological preheating, the subhorizon joint PDF can be obtained by the covariance matrix.
-To emulate the lattice simulations, we then compute equivalent lattice averages of functions of the basic field variables by evaluating the expectation value over the initial field bundle.
-
-This approach should be valid in cases where the most unstable field mode is initially the zero-mode.
-Although this is not completely generic, we will argue below that this occurs wide range of shapes near the local minima of the scalar field potential.
-The computational gain from such an approach is tremendous.
-
-In order to emulate our lattice simulations, we will consider two hierarchies of smoothings.
-In the first, we allow the mean field $\chi_i$ to vary at the start of the simulation.  At a fixed conformal time $\tau$ later we then extract whichever observable quantities we want by {\bf convolving with a Gaussian kernel on the initial trajectories in the cloud}.
+To emulate the lattice simulations, we then compute equivalent lattice averages of functions of the basic field variables by evaluating the expectation value over the initial field bundle
 \begin{equation}
-  \langle\mathcal{O}|\chi_i,\sigma\rangle(\tau) = H_I^{-1}\int d^3x 
+  \langle \mathcal{O} \rangle(\tau) = \sum_{i=1}^{n_{\rm traj}} P_i\mathcal{O}(\qc(\tau|\qc_{0,i}))
 \end{equation}
-These smoothed quantities then approximate the results that would be obtained from running a lattice simulation.
-We are most interested in $\zeta(\chi_i)$, so we now evaluate these smoothed trajectory bundles at a fixed value of the smoothed density $\rho$.
+For example, the extract $\zeta$, we compute $\langle a \rangle$ and $\langle H \rangle$.
+We then obtain $\zeta$ by moving to the desired $\langle H \rangle$ slice and extracting $\ln\langle a \rangle$.
+In the classical limit, the model we consider is conformally invariant, so that $a^2H = \Pi_a$ is constant when averaged over an oscillation of the fields at the bottom of the potential.
+Since we wish to extract the curvature perturbation on fixed $H$ slices, it is therefore convenient to instead consider the smoothed value of the time averaged $\Pi_a$ in order to construct $\zeta$.
+This approach should be valid in cases where the most unstable field mode is initially the zero-mode.
+Although this is not completely generic, we will argue below that this occurs for a wide range of shapes near the local minima of the scalar field potential.
 
-
-
-    {\bf More generally, we should take an initial Gaussian cloud in all of the field phase space directions and follow this.  We don't need to follow $a^2H$ since that is constrained (and we just solve the constraint initially), and we could just take $\ln a$ as a time variable since it is monotonic, so we can safely set $a=1$ through a reparameterisation of time along the trajectory.  Alternatively, in the simulations $a$ is initially the same at each grid site.}
-
-{\bf Emphasize the tremendous computational gain from this approach}
+The computational gain from this approach is tremendous.
+Not only can we evolve each of our effective lattice sites independently, allowing for trivial parallelisation, we only need to consider each value of the initial conditions once and then just adjust the initial probability.
+In comparison, in a single lattice simulation, we must evolve a sufficient number of points that the initial PDF for the subhorizon degrees of freedom is properly sampled.
+Therefore, even without scanning over the mean values within the cube, we must already evolve many copies of trajectories with the same initial conditions (or more precisely with a much finer spacing in initial field values sampling the PDF).
+When the ballistic approximation holds, this amounts to solving for a huge amount of redundant information.
 
 We solve the equations of motion~\eqref{eqn:eom_noscale} using a tenth order accurate Gauss-Legendre integrator~\cite{Butcher,Braden}.
 This integration scheme is symplectic, preserving quadratic invariants of the action as well as the canonical symplectic 2-form for the Hamiltonian system.
