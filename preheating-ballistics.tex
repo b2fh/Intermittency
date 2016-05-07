@@ -76,7 +76,9 @@ As will be seen, this dynamical system exhibits chaotic behaviour for a range of
 Therefore, the preservation of the phase-space structure by our integration scheme is of prime importance when attempting to compute averaged quantities over a cloud of initial trajectories,
 since the chaotic motion would quickly destroy preservation of probabilities for an inferior integration scheme.
 Due to the extreme accuracy of our integrator, we are able to preserve the Hamiltonian constraint $\mathcal{H}=0$ to machine precision along each individual ballistic trajectory.
-{\bf Figure?  Can explicitly see the bit-flipping and corresponding random walk over time if I plot this.  Probably a good idea to also halve the time-step and compare trajectories.}
+\begin{figure}
+  \caption{{\bf Do we want this} \emph{Left:} Evolution of the Hamiltonian constraint along each individual trajectory.  The bit flipping and random walk of the errors associated with machine precision are evident. \emph{Right:} Difference in trajectories if we halve the time step, again demonstrating the machine precision level of convergence.}
+\end{figure}
 
 %In this sense, it is more natural to consider the equations for the longitudinal and transverse parts of the field {\bf Work out this and do the calculation}.
 %An approximate, but less technically involved approach, is to instead consider the radial and angular parts of the field defined through
@@ -94,10 +96,20 @@ We now explore the creation of this structure in more detail, and demonstrate ho
 Since caustic formation is an ubiquitous feature of chaotic billiard dynamics, we hope to convince the reader that this mechanism of density perturbation production from preheating will be extremely common.
 
 {\bf Point out the periodicity in the plot.  Will focus on one period in what follows.  Obtaining the basic structural block requires numerics.  We should also be able to get the scaling of the peaks widths, etc through some reasonably simple argument.  The existence of two distinct peaks occurs because there are 2 arms? (could easily check with another model with 3 arms say).  Substructure comes from usual period doubling and extreme coiling of the string as time evolves.}
-
-For our example, this period is controlled by the Floquet exponent $\mu T_\phi$ for linear perturbations in $\chi$ around a trajectory with $\chi=0$.
+The periodic structure in $\ln\chi_i$ is evident in~\figref{pia_waves}, so for simplicity we focus on the dynamics of a single period of this structure in what follows.
+The existence of the periodicity is easily understood from the linear stability analysis for small fluctuations in $\chi$ around the initial trajectory with $\chi_i=0$, which oscillates solely in the $\phi$ direction.
 As is well known, this problem can be reduced to the solution of the Lame equation~\cite{KofmanGreene} up to small corrections associated with the evolution of the scale factor $a$.
+Standard techniques from Floquet theory then allow for the stability of various wavenumbers of the $\chi$ perturbations to be analysed.
+On finds that for certain ranges of $2g^2/\lambda$ the zero-mode is exponentially unstable, with the $\chi$ zero-mode evolving as $\chi = P(\tau)e^{\mu \tau/T}$ where $P(\tau+T)=P(T)$, $T$ is the period of the $phi$ oscillation, and $\mu$ is known as the Floquet exponent.
 From the ballistic viewpoint, this stage is more naturally viewed as a rotation of trajectory's oscillation ``plane'' {\bf line?} in both the $(\phi,\chi)$ and $(\dot{\phi},\dot{\chi})$ planes.
+{\bf How do we estimate or understand some of the structure of each individual period in $\ln\chi$?}
+
+\begin{figure}
+  \includegraphics[width=0.33\linewidth]{{{lna_tevolve}}}
+  \includegraphics[width=0.33\linewidth]{{{hubble_tevolve}}}
+  \caption{Evolution of $\ln a$ (\emph{left}) and $H$ (\emph{right}) for a variety of time slices.  As the colors change from light orange to red, the $\tau$ slice the trajectories are extracted on increases.  The creation of coherent structures in both variables relevant for $\zeta$ extraction.}
+\end{figure}
+
 
 \begin{figure}
   \caption{Length of the phase string as a function of time.  Here we have defined our metric on phase space as $ds^2 = d\varphi_1^2+d\varphi_2^2 + \Pi_1^2 + \Pi_2^2$.  In addition to the full length of the string, we also show }
