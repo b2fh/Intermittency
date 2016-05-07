@@ -26,7 +26,7 @@ The temperature field can be integrated along the line of sight
 \begin{equation}
 T({\mathbf{n}}) = \int S_T(\mathbf{k}, r') e^{i \mathbf{k}\cdot\mathbf{n} r'}\zeta_{\mathbf{k}}\frac{d^3k}{(2\pi)^3}, \label{eq:Tint1}
 \end{equation}
-where $S(\mathbf{k}, r')$ is the source function that can be computed using a Boltzmann code.
+where $S_T(\mathbf{k}, r')$ is the source function that can be computed using a Boltzmann code.
 
 Plugging \eqref{eq:zetakint} and \eqref{eq:eikx_expand} into \eqref{eq:Tint1}, we obtain the desired expression
 \begin{equation}
@@ -41,18 +41,19 @@ Although it seems to be profitable to convert the 3D integral problem to a 2D in
 \begin{equation}
 \int_0^\infty k^2 j_l(kr) j_l(kr') = \frac{\pi}{2r^2}\delta(r - r') \,. \label{eq:jljlint}
 \end{equation}
-If $S(k, r')$ is $k$-independent and we integrate over $r'$ first, we will be computing a Dirac delta function numerically. To avoid that, we split r.h.s. of eq.~\eqref{eq:FTint} into an instant-recombination term and a correction term:
+If $S_T(k, r')$ is $k$-independent and we integrate over $r'$ first, we will be computing a Dirac delta function numerically. To avoid that, we split r.h.s. of eq.~\eqref{eq:FTint} into an instant-recombination term and a correction term:
 \begin{equation}
-F^T_l(r) =  S\left(\frac{l+1/2}{r}, r\right) + \frac{2r^2}{\pi} \int k^2dk j_l(kr) \int dr' \left[S(k, r')- S\left(\frac{l+1/2}{r'}, r'\right)\right] j_l(kr') \, , \label{eq:FTint2}
+F^T_l(r) =  S\left(\frac{l+1/2}{r}, r\right) + \frac{2r^2}{\pi} \int k^2dk j_l(kr) \int dr' \left[S_T(k, r')- S_T\left(\frac{l+1/2}{r'}, r'\right)\right] j_l(kr') \, , \label{eq:FTint2}
 \end{equation}
 where eq.~\eqref{eq:jljlint} has been used.
 
-The removal of an implicit Dirac delta function improves the numeric stability. However, we are still facing the problem that the amplitude of $k^2 j_l(kr) j_l(kr')$ diverges at high $k$. Fortunately the source $S(k, r')$ is relatively smooth along $k$ direction. It acts as a low-pass filter on $k^2j_l(kr)j_l(kr')$. The numeric accuracy can be greately improved by doing a WKB expansion of $k^2j_l(kr)j_l(kr')$ and keeping only the low frequency part of it. The high frequency part of $k^2j_l(kr)j_l(kr')$ adds fast-oscillating cosine noises, which have negligible contribution to the total integral. The robustness of this method can be tested by varying the frequency cutoff for the low-pass filtering and observe the stability of the result.
+The removal of an implicit Dirac delta function improves the numeric stability. However, we are still facing the problem that the amplitude of $k^2 j_l(kr) j_l(kr')$ diverges at high $k$. Fortunately the source $S_T(k, r')$ is relatively smooth along $k$ direction. It acts as a low-pass filter on $k^2j_l(kr)j_l(kr')$. The numeric accuracy can be greately improved by doing a WKB expansion of $k^2j_l(kr)j_l(kr')$ and keeping only the low frequency part of it. The high frequency part of $k^2j_l(kr)j_l(kr')$ adds fast-oscillating cosine noises, which have negligible contribution to the total integral. The robustness of this method can be tested by varying the frequency cutoff for the low-pass filtering and observe the stability of the result.
 
 The $\chi$ to $\zeta$ mapping is defined for a given scale $L$. The $L^3$-volume averaged $\bar{\zeta}|_{L^3}$ is a function of the averaged $\bar{\chi}|_{L^3}$.
 \begin{equation}
 \bar{\zeta}\vert_{L^3}  = f\left(\bar{\chi}\vert_{L^3}\right)\, .
 \end{equation}
+For a 3D pixel with volume $V > L^3$, an additional Gaussian smoothing is applied.
 
 The random Gaussian $\chi$ field can be realized in discrtized shells with known covariance matrix:
 \begin{eqnarray}
@@ -61,11 +62,13 @@ The random Gaussian $\chi$ field can be realized in discrtized shells with known
 \end{eqnarray}
 where $\mathcal{P}_S\equiv \propto k^{n_s-1} $ is the power spectrum of $\chi$. The function $\,_2F_1$ is the ordinary hypergeometric function and $\Gamma$ the Gamma function.
 
+If the $\chi$-to-$\zeta$ mapping is nonlinear, we use Healpix to convert $\chi_{lm}(r)$'s to configuration space $\chi(r, \theta, \phi)$, apply the nonlinear mapping, and convert $\zeta(r, \theta, \phi)$ back to harmonic space $\zeta_{lm}(r)$'s. The CMB temperature map is obtained using eq.~\eqref{eq:Tint2}. The polarization maps can be obtained using exactly the same procedure, except that the source functions $S_{E,B}$ differ from $S_T$. As a consistency check we compute the simulated CMB power spectrum $C_\ell^{TT,TE,EE}$ for the standard $\Lambda$CDM model, where the random Gaussian field $\zeta$ can be directly simulated using eq.~\eqref{eq:chilmcov} ($\chi$ replaced with $\zeta$). The results are shown in Fig~\ref{fig:Clproj}.
+
 \begin{figure}
   \includegraphics[width=0.33\textwidth]{ClTT_proj.pdf}%
   \includegraphics[width=0.33\textwidth]{ClTE_proj.pdf}%
   \includegraphics[width=0.33\textwidth]{ClEE_proj.pdf}
-  \caption{The black dots are projected $C_\ell^{TT,TE,EE}$ for $\Lambda$CDM model, where $\zeta_{lm}(r)$ are realized using the covariance matrix in eq.~\eqref{eq:chilmcov} ($\chi$ replaced with $\zeta$). The harmonic coefficients $a_{lm}^T$'s are computed using eq.~\eqref{eq:Tint2} and $a_{lm}^E$'s in a similar manner. The solid red lines are the theoretical ensemble averages of $C_\ell^{TT,TE,EE}$. The dark and light blue regions are $1\sigma$ and $2\sigma$ cosmic variance limits, respectively. }
+  \caption{The black dots are projected $C_\ell^{TT,TE,EE}$ for $\Lambda$CDM model from simulated primordial $\zeta$ in 3D space, where the harmonic coefficients $a_{lm}^T$'s are computed using eq.~\eqref{eq:Tint2} and $a_{lm}^E$'s in a similar manner. The solid red lines are the theoretical ensemble averages of $C_\ell^{TT,TE,EE}$. The dark and light blue regions are $1\sigma$ and $2\sigma$ cosmic variance limits, respectively. \label{fig:Clproj}}
 \end{figure} 
 
 
