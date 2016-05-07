@@ -30,14 +30,24 @@ where $S(\mathbf{k}, r')$ is the source function that can be computed using a Bo
 
 Plugging \eqref{eq:zetakint} and \eqref{eq:eikx_expand} into \eqref{eq:Tint1}, we obtain the desired expression
 \begin{equation}
-a_{lm}^T = \int_0^\infty r^2dr \zeta_{lm}(r) F^T_l(r), \label{eq:Tint2}
+a_{lm}^T = \int_0^\infty \zeta_{lm}(r) F^T_l(r) dr, \label{eq:Tint2}
 \end{equation}
 where
 \begin{equation}
-F^T_l(r) = \frac{2}{\pi} \int k^2dk j_l(kr) \int dr' S_T(k, r') j_l(kr') \, . \label{eq:FTint}
+F^T_l(r) = \frac{2r^2}{\pi} \int k^2dk j_l(kr) \int dr' S_T(k, r') j_l(kr') \, . \label{eq:FTint}
 \end{equation}
 
-Although it seems to be profitable to convert the 3D integral \eqref{eq:Tint2} to 2D by first integrating over $r'$ in \eqref{eq:FTint}, practically it is not the case. The method we adopt here is to integrate along $k$ direction first. Because the source $S(k, r')$ is relatively smooth, it acts as a low-pass filter on the product of bessel functions $j_l(kr)j_l(kr')$. The numeric accuracy can be greately enhanced by doing a WKB expansion of $j_l(kr)j_l(kr')$ and keeping only the low frequency part of it. The high frequency part of $j_l(kr)j_l(kr')$ adds noises that are amplified by $k^2$ factor at large $k$. These noises, however, are fast-oscillating cosine waves and have negligible contribution to the total integral. The robustness of this method can be tested in two ways. First, we can vary the frequency cutoff for the low-pass filtering and observe the stability of the result. Secondly, we can compare the realized CMB power spectrum $C_l^{TT}$ with its theoretical expectation. 
+Although it seems to be profitable to convert the 3D integral problem to a 2D integral problem by first integrating over $r'$ in \eqref{eq:FTint} and saving the $r$-indepedent result for all $r$ values in eq.~\eqref{eq:Tint2}, practically it is not the case. The problem can be explictly seen from the identity
+\begin{equation}
+\int_0^\infty k^2 j_l(kr) j_l(kr') = \frac{\pi}{2r^2}\delta(r - r') \,. \label{eq:jljlint}
+\end{equation}
+If $S(k, r')$ is $k$-independent and we integrate over $r'$ first, we will be computing a Dirac delta function numerically. To avoid that, we split r.h.s. of eq.~\eqref{eq:FTint} into an instant-recombination term and a correction term:
+\begin{equation}
+F^T_l(r) =  S\left(\frac{l+1/2}{r}, r\right) + \frac{2r^2}{\pi} \int k^2dk j_l(kr) \int dr' \left[S(k, r')- S\left(\frac{l+1/2}{r'}, r'\right)\right] j_l(kr') \, , \label{eq:FTint2}
+\end{equation}
+where eq.~\eqref{eq:jljlint} has been used.
+
+The removal of an implicit Dirac delta function improves the numeric stability. However, we are still facing the problem that the amplitude of $k^2 j_l(kr) j_l(kr')$ diverges at high $k$. Fortunately the source $S(k, r')$ is relatively smooth along $k$ direction. It acts as a low-pass filter on $k^2j_l(kr)j_l(kr')$. The numeric accuracy can be greately improved by doing a WKB expansion of $k^2j_l(kr)j_l(kr')$ and keeping only the low frequency part of it. The high frequency part of $k^2j_l(kr)j_l(kr')$ adds fast-oscillating cosine noises, which have negligible contribution to the total integral. The robustness of this method can be tested in two ways. First, we can vary the frequency cutoff for the low-pass filtering and observe the stability of the result. Secondly, we can compare the realized CMB power spectrum $C_l^{TT}$ with its theoretical expectation. 
 
 The $\chi$ to $\zeta$ mapping is defined for a given scale $L$. The $L^3$-volume averaged $\bar{\zeta}|_{L^3}$ is a function of the averaged $\bar{\chi}|_{L^3}$.
 \begin{equation}
@@ -47,9 +57,9 @@ The $\chi$ to $\zeta$ mapping is defined for a given scale $L$. The $L^3$-volume
 The random Gaussian $\chi$ field can be realized in discrtized shells with known covariance matrix:
 \begin{eqnarray}
   \langle \chi^*_{lm}(r) \chi_{l'm'}(r')\rangle &=& \frac{\pi^2}{2^{2-n_s}}  \delta_{ll'}\delta_{mm'} \mathcal{P}_S\left(\frac{2}{r+r'}\right) \left(\frac{2\max(r,r')}{r+r'}\right)^{1-n_s} \left(\frac{\min(r, r')}{\max(r,r')}\right)^l\\
- &&  \times \frac{\Gamma\left(l+\frac{n_s-1}{2}\right)}{\Gamma\left(l+\frac{3}{2}\right)\Gamma\left(4-n_s\right)} {\,_2F_1\,}\left( \frac{n_s}{2}-1,\, l+\frac{n_s-1}{2},\, l+ \frac{3}{2},\, \left(\frac{\min(r, r')}{\max(r,r')}\right)^2\right)     \nonumber \, ,
+ &&  \times \frac{\Gamma\left(l+\frac{n_s-1}{2}\right)}{\Gamma\left(l+\frac{3}{2}\right)\Gamma\left(4-n_s\right)} {\ _2F_1\,}\left( \frac{n_s}{2}-1,\, l+\frac{n_s-1}{2},\, l+ \frac{3}{2},\, \left(\frac{\min(r, r')}{\max(r,r')}\right)^2\right)     \nonumber \, ,
 \end{eqnarray}
-where $\mathcal{P}_S \propto k^{n_s-1}$ is the power spectrum of $\chi$.  The function $\,_2F_1$ is the ordinary hypergeometric function and $\Gamma$ the Gamma function.
+where $\mathcal{P}_S\equiv \propto k^{n_s-1} $ is the power spectrum of $\chi$. The function $\,_2F_1$ is the ordinary hypergeometric function and $\Gamma$ the Gamma function.
 
 At high resolution ($\ell \gtrsim 1000$) CMB lensing starts to kick in and linear transfer is not sufficiently accurate. We restrict the discussion in this paper to angular scales $\ell \lesssim 1000$ and leave the sophistication beyond linear transfer to our future work.
 
