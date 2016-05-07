@@ -85,12 +85,16 @@ Due to the extreme accuracy of our integrator, we are able to preserve the Hamil
 %  \chi &= \sigma\sin\theta
 %\end{align}
 
-\begin{figure}
-  \caption{Caustic plot in $\Pi_a = a^2H$.  On the left show the ballistic trajectory one (with appropriate smoothings), on the right show the full lattice simulation one.}
+Since our primary goal is to compute the comoving curvature perturbation $\zeta$, in~\figref{fig:pia_waves} we show the evolution of $\Pi_a=a^2H$ as a function of initial superhorizon $\chi_i$ for both our ballistic simulations and full lattice simulations.
+\begin{figure}\label{fig:pia_waves}
+  \caption{Evolution of the canonical momentum associated with the scale factor $\Pi_a = a^2H$ as a function of conformal time $\tau$ and initial $\chi$ value.  On the left we show the result for individual (unsmoothed) ballistic trajectories, in the middle panel with a smoothing by a Gaussian kernel of width {\bf fill in} and in the bottom panel for full lattice simulations.  For comparison, we also show the computed curvature perturbation $\zeta$ for the ballistic and lattice approaches.}
 \end{figure}
-{\bf Explain the structure in this caustic plot.  The periodicity is easy to understand.  Obtaining the basic structural block requires numerics.  We should also be able to get the scaling of the peaks widths, etc through some reasonably simple argument.  The existence of two distinct peaks occurs because there are 2 arms? (could easily check with another model with 3 arms say).  Substructure comes from usual period doubling and extreme coiling of the string as time evolves.}
+\figref{fig:pia_waves} provides a convincing demonstration that the production of density perturbations from preheating modulated by a superhorizon isocurvature mode can (at least in the case of the model described by~\eqref{eqn:}) be understood in terms of ballistic motion of scalar fields oscillating in a potential.
+We now explore the creation of this structure in more detail, and demonstrate how the field dynamics and formation of caustics leads to the spiky structure for $\zeta$.
+Since caustic formation is an ubiquitous feature of chaotic billiard dynamics, we hope to convince the reader that this mechanism of density perturbation production from preheating will be extremely common.
 
-We now present the evolution for a single period of the caustic structure in the initial values of $\ln\chi_i$.
+{\bf Point out the periodicity in the plot.  Will focus on one period in what follows.  Obtaining the basic structural block requires numerics.  We should also be able to get the scaling of the peaks widths, etc through some reasonably simple argument.  The existence of two distinct peaks occurs because there are 2 arms? (could easily check with another model with 3 arms say).  Substructure comes from usual period doubling and extreme coiling of the string as time evolves.}
+
 For our example, this period is controlled by the Floquet exponent $\mu T_\phi$ for linear perturbations in $\chi$ around a trajectory with $\chi=0$.
 As is well known, this problem can be reduced to the solution of the Lame equation~\cite{KofmanGreene} up to small corrections associated with the evolution of the scale factor $a$.
 From the ballistic viewpoint, this stage is more naturally viewed as a rotation of trajectory's oscillation ``plane'' {\bf line?} in both the $(\phi,\chi)$ and $(\dot{\phi},\dot{\chi})$ planes.
@@ -118,3 +122,7 @@ From the ballistic viewpoint, this stage is more naturally viewed as a rotation 
 \end{figure}
 
 {\bf To Do:  Fix the initial Hubble to be the same at the start of each inidividual trajectory?  Might remove one of the ugly splitting issues.}
+
+\subsection{Dynamics in field $\phi,\chi$ plane}
+
+\subsection{Dynamics in gravitational $a,\Pi_a$ plane}
