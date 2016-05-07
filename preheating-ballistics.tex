@@ -1,33 +1,24 @@
 \section{Curvature Perturbations from Ballistic Dynamics During Preheating}
-Let's now consider how the trajectory dynamics and development of caustics manifests itself in preheating, and leads to the production of (non-Gaussian) curvature perturbations.
+Let's now consider how the trajectory dynamics and development of caustics manifest in preheating, and eventually lead to the production of (non-Gaussian) curvature perturbations.
 We focus on a specific model in this section, although from the discussion it should be evident that the generic features leading to the production of curvature perturbations will appear in a wide variety of models.
 Ultimately, we want to compute the curvature perturbation $\zeta = \ln a|_{\rho}(\chi_i)$ subject to the constraint of some initial mean value
 \begin{equation}
-  \langle \zeta | \chi_i, \sigma_\chi \rangle \qquad \langle \delta\chi^2 \rangle = \sigma_\chi^2 \, .
+  \chi_i^{(H_e)} \equiv \langle \chi \rangle_{H_e^{-1}}
 \end{equation}
-Here $\chi_i = \langle \chi \rangle$ is the mean value of $\chi$ on the end of inflation hypersurface and $\sigma$ represents the subhorizon variance in $\chi$.
-{\bf In principle we should include the other fluctuations in here.  In particular, chidot fluctuations are non-negligible on subhorizon scales and these will also contribute.  The superhorizon chidot can be approximated with the slow-roll solution (although in practice the correlations can also be computed to do a more rigourous job).}
-In order to emulate our lattice simulations, we will consider two hierarchies of smoothings.
-In the first, we allow the mean field $\chi_i$ to vary at the start of the simulation.  At a fixed conformal time $\tau$ later we then extract whichever observable quantities we want by {\bf convolving with a Gaussian kernel on the initial trajectories in the cloud}.
-\begin{equation}
-  \langle\mathcal{O}|\chi_i,\sigma\rangle(\tau) = H_I^{-1}\int d^3x 
-\end{equation}
-These smoothed quantities then approximate the results that would be obtained from running a lattice simulation.
-We are most interested in $\zeta(\chi_i)$, so we now evaluate these smoothed trajectory bundles at a fixed value of the smoothed density $\rho$.
+where the spatial average is taken over a local Hubble volume on the end of inflation hypersurface.
 
+In section~\ref{sec:} we presented calculations of $\langle \zeta | \chi_i \rangle_{H_e}$ for a specific preheating model using full three-dimensional lattice simulations.
+We also presented some preliminary evidence that the detailed structure of the resultant curvature perturbations could be understood in terms of smoothed motions of bundles of decoupled ballistic trajectories evolving in the potential.
+We will now expand on this observation and demonstrate that the production of curvature spikes from the preheating dynamics can be understood in terms of the formation of caustics in the dynamics of trajectories.
 
-
-    {\bf More generally, we should take an initial Gaussian cloud in all of the field phase space directions and follow this.  We don't need to follow $a^2H$ since that is constrained (and we just solve the constraint initially), and we could just take $\ln a$ as a time variable since it is monotonic, so we can safely set $a=1$ through a reparameterisation of time along the trajectory.  Alternatively, in the simulations $a$ is initially the same at each grid site.}
-
-{\bf Emphasize the tremendous computational gain from this approach}
-
-In the ballistic approximation, an $n$-field scalar field model interacting with gravity lives in a $4n+2$-dimensional phase space along with a single constraint $3H^2 = \rho$. {\bf This argument makes the manifold the motion actually occurs on odd dimensional.  This seems odd from a Hamiltonian point of view.  Does that mean the motion when the constraint is explicitly enforced lacks a symplectic structure?}.
-To illustrate the basic phenomena, our single-particle Lagrangian to be (up to a total derivative)
+In the ballistic approximation, an $n$-field scalar field model interacting with gravity lives in a $2n+2$-dimensional phase space along with a single constraint $3H^2 = \rho$.
+To illustrate the basic phenomena, we take our single-particle Lagrangian to be (up to a total derivative)
 \begin{equation}
   L = \frac{a^2}{2}\dot{\phi}^2 + \frac{a^2}{2}\dot{\chi}^2 - a^4\frac{\lambda}{4}\left(\phi^4 + \frac{g^2}{\lambda}\phi^2\chi^2\right) - 3M_P^2\dot{a}^2 + 3M_P^2\partial_\tau(a\dot{a})
 \end{equation}
-For simplicity, we set $M_P=1$ in what follows.  It is convenient to choose $\varphi_1 = a\phi$ and $\varphi_2 = a\chi$ as canonical field variables, with corresponding canonical momenta $\Pi_1 = a\dot{\phi}$ and $\Pi_2=a\dot{\chi}$ where a dot represents a derivative with respect to conformal time $\tau$.
+For simplicity, we set $M_P=1$ in what follows.
 
+It is convenient to choose $\varphi_1 = a\phi$ and $\varphi_2 = a\chi$ as canonical field variables, with corresponding canonical momenta $\Pi_1 = a\dot{\phi}$ and $\Pi_2=a\dot{\chi}$ where a dot represents a derivative with respect to conformal time $\tau$.
 In terms of these variables, the Hamiltonian is
 \begin{equation}
   \mathcal{H} = \frac{\Pi_1^2}{2} + \frac{\Pi_2^2}{2} + \left(\varphi_1\Pi_1 + \varphi_2\Pi_2\right)\frac{\Pi_a}{a} + \frac{\lambda}{4}\left(\varphi_1^4 + \frac{2g^2}{\lambda}\varphi_1^2\vartheta_2^2 \right) - \frac{\Pi_a^2}{12 M_P^2}
@@ -55,6 +46,32 @@ and equations
   \frac{\partial a}{\partial\tau}     &= -\frac{\Pi_a}{6M_P^2} \\
   \frac{\partial\Pi_a}{\partial\tau}  &= \sum_i\frac{\pi_i^2}{a^3} - a^3V \, .
 \end{align}
+
+To connect to our lattice simulations, we consider the evolution of a collection of decoupled ballistic trajectories.
+These trajectories are centered on the mean values of the fundamental fields in the corresponding lattice simulations, and each one receives a weight corresponding to the probability that the particular value would be realised amongst the subhorizon fluctuations.
+The mean value is drawn from the distribution of superhorizon values $\chi_i$, and each ballistic trajectory is then meant to simulate the evolution of the fields on subhorizon scales.
+Therefore, we can completely specify the relevant initial data .
+For Gaussian subhorizon fluctuations relevant to the case of cosmological preheating, the subhorizon joint PDF can be obtained by the covariance matrix.
+To emulate the lattice simulations, we then compute equivalent lattice averages of functions of the basic field variables by evaluating the expectation value over the initial field bundle.
+
+This approach should be valid in cases where the most unstable field mode is initially the zero-mode.
+Although this is not completely generic, we will argue below that this occurs wide range of shapes near the local minima of the scalar field potential.
+The computational gain from such an approach is tremendous.
+
+In order to emulate our lattice simulations, we will consider two hierarchies of smoothings.
+In the first, we allow the mean field $\chi_i$ to vary at the start of the simulation.  At a fixed conformal time $\tau$ later we then extract whichever observable quantities we want by {\bf convolving with a Gaussian kernel on the initial trajectories in the cloud}.
+\begin{equation}
+  \langle\mathcal{O}|\chi_i,\sigma\rangle(\tau) = H_I^{-1}\int d^3x 
+\end{equation}
+These smoothed quantities then approximate the results that would be obtained from running a lattice simulation.
+We are most interested in $\zeta(\chi_i)$, so we now evaluate these smoothed trajectory bundles at a fixed value of the smoothed density $\rho$.
+
+
+
+    {\bf More generally, we should take an initial Gaussian cloud in all of the field phase space directions and follow this.  We don't need to follow $a^2H$ since that is constrained (and we just solve the constraint initially), and we could just take $\ln a$ as a time variable since it is monotonic, so we can safely set $a=1$ through a reparameterisation of time along the trajectory.  Alternatively, in the simulations $a$ is initially the same at each grid site.}
+
+{\bf Emphasize the tremendous computational gain from this approach}
+
 We solve the equations of motion~\eqref{eqn:eom_noscale} using a tenth order accurate Gauss-Legendre integrator~\cite{Butcher,Braden}.
 This integration scheme is symplectic, preserving quadratic invariants of the action as well as the canonical symplectic 2-form for the Hamiltonian system.
 As will be seen, this dynamical system exhibits chaotic behaviour for a range of coupling parameter $2g^2/\lambda$.
