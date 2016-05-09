@@ -43,7 +43,7 @@ Although it seems to be profitable to convert the 3D integral problem to a 2D in
 \end{equation}
 If $S_T(k, r')$ is $k$-independent and we integrate over $r'$ first, we will be computing a Dirac delta function numerically. To avoid that, we split r.h.s. of eq.~\eqref{eq:FTint} into an instant-recombination term and a correction term:
 \begin{equation}
-F^T_l(r) =  S\left(\frac{l+1/2}{r}, r\right) + \frac{2r^2}{\pi} \int k^2dk j_l(kr) \int dr' \left[S_T(k, r')- S_T\left(\frac{l+1/2}{r'}, r'\right)\right] j_l(kr') \, , \label{eq:FTint2}
+F^T_l(r) =  S_T\left(\frac{l+1/2}{r}, r\right) + \frac{2r^2}{\pi} \int k^2dk j_l(kr) \int dr' \left[S_T(k, r')- S_T\left(\frac{l+1/2}{r'}, r'\right)\right] j_l(kr') \, , \label{eq:FTint2}
 \end{equation}
 where eq.~\eqref{eq:jljlint} has been used.
 
