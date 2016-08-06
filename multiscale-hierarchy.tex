@@ -1,7 +1,95 @@
 \section{Multiscale Hierarchies and Generation of Modulation Parameters}
 Outline the basic scales in the problem and indicate that we have a multiple hierarchies to consider.  Also explain how we will basically view each spatial position as some individual ballistic trajectory.  This generalises the philosophy behind the separate universe approximation.  When going from the smaller length scales back up to larger length scales in the hierarchy, convolutions must be done.  This allows for entropy generation via coarse-graining.  The complicated motion of the trajectories then allows for the coarse-graining to in some sense operate very differently in different spatial locations.  This leads to $\zeta$ perturbations and a relationship to entropy production.  To recover the results for the CMB, we must then smooth the fine-grained distribution associated with $\bar{\chi}$ smoothed over a Hubble patch at the end of inflation, back up to a scale associated with the size of a CMB pixel.
 
+\begin{itemize}
+\item Scales in problem: much larger than current horizon, between CMB pixel (or some other smooth scale) and current horizon, between end of inflation Hubble size and CMB pixel (or other smoothing radius), subhorizon at end of inflation.
+\item If there are light fields besides the inflaton during inflation, we naturally generate fluctuations on all of these scales (with the subhorizon at end of inflation just being standard Minkowski fluctuations)
+\item The ``classical'' perturbations (ie. the ones that are superhorizon at the end of inflation) can act as modulators of the subhorizon dynamics
+\item Obvious approach is to explore individual end-of-inflation hubble patches using lattice simulations
+\item Basically boils down to a long-short wavelength split, with long-wavelength structure approximated as a constant within a given simulation cube
+\item If the dynamics is chaotic, small changes in the mean value of the modulating field in the box can drastically change the subhorizon dynamics
+\item This can result in an imprint in the curvature perturbation
+\item The long and short dynamics are then solved self-consistently (modulo the assumption that the long-wavelength structure can be viewed as constant values in a Hubble patch), with no additional assumptions about short vs fast time-scales for the two problems.  Therefore, it's not a perturbative approach where we evolve the subhorizon assuming a t-indep large scale mode, followed by adjusting the large scale, then advancing the subhorizon again.
+\item To get back to observables, we must then marginalise the fine-grained simulations with sizes of order the end of inflation Hubble, back to coarse grained CMB pixels, etc relevant to observations
+\item We will show that in some cases the lattice simulations can be replaced by ballistic dynamics.  This extends the separate universe picture, where individual Hubble patches are basically viewed as ballistic trajectories (albeit with extra noise drivers during inflation) down to subhorizon physics.
+\end{itemize}
+
+{\bf Stuff about generating superhorizon hierarchies}
+After inflation, causality restricts the direct influence of a given spacetime point to its forward light-cone. {\bf But if there exist non-local correlations, is this still true?}
+From this, one may be tempted to conclude that the post-inflationary dynamics cannot generate curvature perturbations on scales larger than the Hubble scale at the end of inflation.
+{\bf However, this argument can fail if there exist non-local correlations at the beginning of the evolution.  If present, these correlations may evolve in time via local field dynamics.}
+As an example of this phenomena, here we will consider models with large-scale isocurvature modes that can modulate the subhorizon dynamics in highly nontrivial ways.
+{\bf Phrase this as we can think of the dynamics this way}
+Since the post-inflationary dynamics respects causality, we can consider a division into long- and short-wavelength modes,
+with the long-wavelength given by the fields smoothed with some given kernel $W$ whose width is of order $H_{\rm end}^{-1}$
+\begin{equation}
+  f_{\rm long}({\bf x}) = \int d^3x W({\bf x}-{\bf x'}) f({\bf x'})
+\end{equation}
+where $f$ denotes some generic field we wish to smooth and the integral is on the hypersurface defined by the end of inflation.
+The corresponding short wavelength modes are then
+\begin{equation}
+  f_{\rm short} = f - f_{\rm long} \, .
+\end{equation}
+{\bf More details about how to define the Hubble and end-of-inflation surface?}
+As a crude approximation to this smoothing, we can imagine dividing the end-of-inflation hypersurface into a disjoint set of cubes with side lengths $H_{\rm end}^{-1}$.
+{\bf Some more details of this construction}
+
+The simplest way to view this is as a split into long- and short-wavelength modes, with the long-wavelength given by the fields smoothed on scales of order the local Hubble radius, and the remaining subhorizon modes evolving {\bf it's not like the large-scale acts as a background}.
+
+In particular, if the field dynamics is chaotic as the modulating parameter is varied, then tiny variations in the modulating field may be amplified into a curvature perturbation of sufficient amplitude to be observed.
+This may occur even if the energy stored in the isocurvature modes is tiny compared to the energy stored in the inflaton, thus evading CMB constraints on large-scale isocurvature perturbations.
+
+In ballistic approximation, we can think of the field evolution as a bundle  even need to clarify that the dynamics is chaotic when varying the superhorizon par.  If the ballistic trajectories are chaotic, then varying the superhorizon mean of the intial bundle naturally
+
+
+In this way, the nonlinear post-inflation dynamics can take the initial correlations encoded in the mean value of the (smoothed) modulating field(s) a process them into an observable response in the comoving curvature perturbation.
+In the language of a long-short wavelength split, the detailed dynamics of the subhorizon fields depends on the local value of the long wavelength modes.
+The backreaction of the short-wavelength physics onto the long-wavelength modes then results in a response of the large-scale comoving curvature perturbation to the preheating dynamics.
+Since preheating is a local process (which smoothed on inverse Hubble scales), the response is in the form of a local mapping of the original large-scale field values.
+Thus, this type of effect does not violate causality or imprint new superhorizon structure into the universe.
+Rather, it takes existing superhorizon structure (in the form of the modulating field) and reprocesses it into modified long-wavlength correlations.
+
+The local value of the Hubble radius provides a natural long-short split of the dynamics, with the field smoothed over the local value of the Hubble expansion rate viewed as a the slowly evolving long-wavelength dynamics, and the remaining sub-Hubble modes treated as the short-wavelength fast system whose dynamics is modulated by the local
+{\bf This discussion of smoothing, definition of Hubble, etc. should probably be made more precise including what hypersurfaces to do the smoothing on, definition in turms of trace of extrinsic curvature, etc}
+{\bf The notion of the long-wavelength as slow probably isn't the best.  Maybe just stick to long and short.  Of course, the lattice will automatically evolve the long-wavelength for us.}
+
 \begin{figure}
   \includegraphics[width=0.9\linewidth]{{{multiscale_isocon}}}
   \caption{Multiscale structure of the isocurvature mode that acts as a modulator for the preheating dynamics.}
 \end{figure}
+
+{\bf From here down explain the mathematical description of the above}
+The full set of information is thus contained in
+\begin{equation}
+  \left\langle \mathcal{O} | \vec{\lambda}(x)\right\rangle_{H^{-1}}(x)
+\end{equation}
+where $\mathcal{O}$ are fields encoding the relevant cosmological observables,
+
+{\bf Explain how we can reduce this to expectation values given a mean $\lambda$ due to separate universe approximation.  Also explain how we only care about statistics}
+
+
+\subsection{Constrained Realisations of $\zeta$}
+Cosmological observables are encoded in the comoving curvature perturbation $\zeta$.
+We thus want determine the mean $\zeta$ given a particular large-scale realisation of the modulating fields $\vec{\lambda}(x)$
+\begin{equation}
+  \left\langle \zeta | \vec{\lambda}(x)\right\rangle(x) \, .
+\end{equation}
+Furthermore, cosmological observations cannot probe lengt
+{\bf Now describe various averagings that must go into our calculations}
+we thus want  must thus spatially average over the subhorizon fluctuations at the end of inflation, including the full dynamical effects of backreaction on the Hubble size background patch
+\begin{equation}
+  \left\langle \mathcal{O}|\vec{\lambda} \right\rangle
+\end{equation}
+where $\mathcal{O}$ is some relevant cosmological observable (which we will take to the the comoving curvature perturbation $\zeta$ in this paper) and $\vec{\lambda}$ are a vector of control parameters which modulate the subhorizon dynamics and as a result their effects on the large-scale perturbations.
+
+
+{\bf Here begins JB's finished product}
+\subsection{Inflationary Dynamics and Stochastic Description}
+{\bf Give a brief overview of stochastic inflation}
+\subsection{Post-Inflation Dynamics}           
+After inflation ends, the stochastic generation of curvature perturbations from the amplification and freeze-out of quantum perturbations crossing the horizons ends.
+As a result, the stochastic source term describing the motions of individual Hubble patches vanishes and the subsequent motion instead follows deterministic ballistic motion.
+{\bf What are the backreaction terms associated with coarse-graining, etc?}
+{\bf Quantum fluctuations are still very important for preheating, but they must be viewed statistically}
+After a suitable coarse-graining over Hubble-sized patches on uniform density slices, we can then view the resulting
+{\bf This isn't really rigourous, since this results in an overcomplete basis.  Probably better to use some sort of actual basis (complete and orthonormal) for doing the decomposition.}
