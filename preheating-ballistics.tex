@@ -33,12 +33,12 @@ with the constraint
 \begin{equation}
   \mathcal{H} = 0 \, .
 \end{equation}
-These yield the following equations of motion
+This yields the following equations of motion
 \begin{align}\label{eqn:eom_scale}
   \frac{\partial\varphi_i}{\partial\tau} &= \Pi_i - \frac{\varphi_i}{6M_P^2a}\left(\Pi_a + \frac{\varphi_i}{a}\right) \\
   \frac{\partial\Pi_i}{\partial\tau}     &= -\frac{\partial\tilde{V}}{\partial\varphi} +\frac{1}{6M_P^2 a}\left(\Pi_a + \frac{\varphi_i}{a}\right)\Pi_i - \frac{\partial \tilde{V}}{\partial\varphi} \\
   \frac{\partial a}{\partial\tau}        &= -\frac{1}{6M_P^2}\left(\Pi_a + \frac{\varphi_i}{a}\Pi_i\right) \\
-  \frac{\partial\Pi_a}{\partial\tau}     &= -\frac{1}{6M_P^2 a^2}\sum_i\varphi_i\Pi_i
+  \frac{\partial\Pi_a}{\partial\tau}     &= -\frac{\varphi_i}{6M_P^2 a^2}\left(\Pi_a + \frac{\varphi_i}{a}\Pi_i\right)
 \end{align}
 where $\tilde{V}(\vec{\varphi}) = a^{-4}V(\vec{\phi}) = \frac{\lambda}{4}\left(\varphi_1^4 + \frac{g^2}{2\lambda}\varphi_1^2\varphi_2^2 \right)$.
 Note that the canonical momenta for the unscaled field coordinates (see below) $\pi_a = \Pi_a + \frac{\varphi_i}{a} = -6M_P^2\dot{a}$ appears as a damping term in each of the equations.
@@ -47,10 +47,11 @@ Alternatively, in unscaled field variables $\phi,\chi$ we have
   \pi_i &= a^2\dot{\phi}_i\\
   \pi_a &= -6M_P^2\dot{a} 
 \end{align}
+and
 \begin{equation}
   \mathcal{H} = \sum_i\frac{\pi_i^2}{2a^2} + a^4V(\vec{\phi}) - \frac{\Pi_a^2}{12M_P^2}
 \end{equation}
-and equations
+with corresponding equations
 \begin{align}\label{eqn:eom_noscale}
   \frac{\partial\phi_i}{\partial\tau} &= \frac{\pi_i}{a^2} \\
   \frac{\partial\pi_i}{\partial\tau} &= -a^4 \frac{\partial_iV(\phi)}{\partial\phi_i} \\
