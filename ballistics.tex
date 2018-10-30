@@ -143,29 +143,7 @@ In this case, the well-known picture of stochastic inflation {\bf yadda yadda, b
 
 \input{nongaussian-maps}
 
-\section{Entropy Generation and the Curvature Perturbation}
-The evolution of the large-scale comoving curvature perturbation can be related to the production of entropy in the coarse-grained system.
-From the second law of thermodynamics, we have
-\begin{equation}
-  d\rho + (\rho+P)d\ln V = \frac{TdS}{V}
-\end{equation}
-and along individual ballistic trajectories, comoving conservation of stress-energy enforces
-\begin{equation}
-  \dot{\rho} + 3H(\rho+P) = 0
-\end{equation}
-which demonstrates that the entropy is conserved along individual ballistic trajectories.
-However, we are interesting in the comoving curvature perturbation averaged over spatial regions of order the local Hubble.
-This coarse-graining requires us to average over many individual trajectories in order to obtain the relevant large-scale perturbation.
-Let's denote quantities averaged over a spatial region $\Omega$ by
-\begin{equation}
-  \mathcal{O}_\Omega = V^{-1}\int_\Omega d^3x a^3(x)\mathcal{O}(x) \qquad V \equiv \int_\Omega d^3x a^3(x)
-\end{equation}
-where $x$ are comoving coordinates which we can think of as labelling the geodesic motion of each individual ballistic trajectory.
-
-{\bf What happens if we allow for anisotropy (while enforcing homogeneity?)}
-\begin{equation}
-  \frac{dS}{N} = \beta3\frac{\rho + P}{\bar{n}} d\zeta
-\end{equation}
+\input{zeta-charge}
 
 \subsection{Some Interesting Musings}
 First consider a large volume of space, denoted by $\Omega_{UL}$.
@@ -193,6 +171,10 @@ However, we may also wish to compare $\ln a$ in $\Omega$ to the average expansio
 \begin{equation}
   \delta\zeta \equiv \langle \ln a \rangle_\Omega - \langle \ln a \rangle_{V_{UL}}
 \end{equation}
+
+\begin{figure}
+  \caption{Here we initialise a single sine wave of fixed wavenumber as the initial condition for our ballistics code.  We can then evolve it to show how initially it's just linear perturbation theory (and can even FT to get the growth of higher harmonics) and then compare this to a lattice simulation with the identical Fourier mode initialized.  This will help clarify exactly how the zero-mode is capturing the growth of inhomogeneities, i.e. if the restoring forces from gradients are actually important in determining the growth rates of various Fourier modes.  Probably the point is that nonlinearity in the background onsets well before nonlinearity from mode-mode coupling, and this is what drives everything.}
+\end{figure}
 
 \bibliography{ballistics}
 \bibliographystyle{plain}

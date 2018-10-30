@@ -1,0 +1,54 @@
+\section{Curvature Perturbation, Entropy Generation, and }
+The evolution of the large-scale comoving curvature perturbation can be related to the production of entropy in the coarse-grained system.
+From the second law of thermodynamics, we have
+\begin{equation}
+  d\rho + (\rho+P)d\ln V = \frac{TdS}{V}
+\end{equation}
+and along individual ballistic trajectories, comoving conservation of stress-energy enforces
+\begin{equation}\label{eqn:rho-cons}
+  \dot{\rho} + 3H(\rho+P) = 0
+\end{equation}
+which demonstrates that the entropy is conserved along individual ballistic trajectories.
+It is convenient to define
+\begin{equation}
+  d\zeta = \frac{d\ln\rho}{3(1+w)} + \frac{1}{3}d\ln V
+\end{equation}
+so that along individual paths we have
+\begin{equation}
+  \zeta(t) \equiv \int_{t_i}^t dt \frac{1}{3(1+w)}\frac{d\ln\rho}{dt} + \frac{d\ln a}{dt} \, .
+\end{equation}
+From~\eqref{eqn:rho-cons}, we see that $\zeta$ is conserved along ballistic trajectories as long as the the trajectories do not interact with each other and gradient terms can be neglected.
+However, when gradients in the field become important, this trajectory wise conservation is broken.
+In a simplistic case where we assume the metric continues to be FRW, but allow the fields $\phi_i$ to be inhomogeneous, we have
+\begin{equation}
+  \frac{1}{3(1+w)}\frac{d\ln\rho}{dt} + \frac{d\ln a}{dt} = \sum_i\frac{\nabla\cdot(\dot{\phi_i}\nabla\phi_i)}{3a^2(\rho+P)}
+\end{equation}
+for the case of a collection of scalar fields with canonical kinetic term.
+Beyond the ballistic approximation, the individual trajectories will be connected to each other via spatial gradients (and non-locally through the Hubble constraint).
+
+When considering the effects of divergences between small scale trajectories on the overall large-scale expansion, it is convenient to remove the effects of the current being exchanged between the trajectories by writing
+\begin{equation}
+  \frac{d\zeta}{dt} = \frac{1}{a^2}\nabla\cdot\left(\frac{\dot{\phi}_i\nabla\phi_i}{3(\rho+P)}\right) + \frac{1}{3a^2}\frac{\dot{\phi}\nabla\phi}{\rho+P}\cdot\nabla\ln(\rho+P) \, .
+\end{equation}
+We therefore define the $\zeta$ current
+\begin{equation}
+  {\bf J}_{\zeta} \equiv \frac{\dot{\phi}\nabla\phi}{3(\rho+P)}
+\end{equation}
+so that
+\begin{equation}
+  \frac{d\zeta}{dt} = \nabla\cdot{\bf J}_\zeta + {\bf J}_\zeta\cdot\nabla\ln(\rho+P) \, .
+\end{equation}
+If we consider $\zeta$ averaged on a constant $t$ slice, we then find
+\begin{equation}
+  \frac{d\langle\zeta\rangle_V}{dt} = \frac{1}{V}\int (1+\ln(\rho+P)){\bf J}_\zeta\cdot d{\bf \Sigma} - \frac{1}{V}\int d{\bf x}\ln(\rho+P)\nabla\cdot{\bf J}_\zeta \, .
+\end{equation}
+If we further define the $\zeta$ potential by
+\begin{equation}
+  \nabla^2\Psi_\zeta = \nabla\cdot{\bf J}_\zeta
+\end{equation}
+then we can alternatively write the volume term as
+\begin{equation}
+  \frac{1}{V}\int d{\bf x}\ln(\rho+P)\nabla\cdot{\bf J}_\zeta = \frac{1}{V}\int d{\bf x}\Psi_\zeta \nabla^2\ln(\rho+P) \, .
+\end{equation}
+
+{\bf Include more general case.  Allow for projections into fluid rest frame, etc., figure out which is the best frame to be using for this analysis}

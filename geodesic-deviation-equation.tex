@@ -1,0 +1,26 @@
+\documentclass[11pt,a4paper]{article}
+\pdfoutput=1
+\usepackage{jcap}
+
+\begin{document}
+\section{Derivation of GDE}
+Consider the equations of motion for a phase space vector given by
+\begin{equation}
+  \dot{v} = H(v)
+\end{equation}
+where we have assumed that the dynamics is autonomous. {\bf We could remove zeta as a dependent variable and make it non-autonomous?  Then we have the view of carrying zeta around with us}
+Our goal is to determine the motion of deviation vectors in phase space defined by
+\begin{equation}
+  \delta(t|v_0) = v(t|x_0+\delta) - v(t|x_0) \, .
+\end{equation}
+We work in the limit of infinitesimal initial perturbations, so that we can linearize the equations for $\delta$.
+We have
+\begin{equation}
+  \dot{\delta} = \dot{v}(t|v_0+\delta) - \dot{v}(t|v_0) = \mathcal{H}(v(t|v_0+\delta)) - \mathcal{H}(v(t|v_0))
+\end{equation}
+Since we assume an infinitesimal perturbation, we have $v(t|v_0+\delta) = v(t|v_0) + \delta(t|v_0)$ and we can expand $\mathcal{H}$
+\begin{equation}
+  \dot{\delta} = \frac{\partial\mathcal{H}}{\partial v_0}
+\end{equation}
+
+\end{document}

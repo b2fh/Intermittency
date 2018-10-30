@@ -1,0 +1,87 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb}
+
+\begin{document}
+
+The idea is consider the evolution of individual trajectories
+\begin{equation}
+  {\bf q}(t|{\bf q}_0)
+\end{equation}
+satisfying
+\begin{equation}
+  \frac{d{\bf q}}{dt} = {\bf F}[{\bf q}]
+\end{equation}
+with the initial condition
+\begin{equation}
+  {\bf q}(t=t_0|{\bf q}_0) = {\bf q}_0 \, .
+\end{equation}
+It is then useful to consider trajectories initially separated by a small displacement
+\begin{equation}
+  {\bf \delta}(t|{\bf q}_0,{\bf \delta}_0) \equiv {\bf q}(t|{\bf q}_0 + {\bf \delta}_0) - {\bf q}(t|{\bf q}_0) \approx \frac{\partial{\bf q}}{\partial{\bf q}_0}\cdot{\bf \delta}_0
+\end{equation}
+where in the last step we have assumed an infinitesimal initial perturbation.
+It is useful to define the matrix $\mathbb{D}$ by
+\begin{equation}
+  D_{ij} = \frac{\partial q_i}{\partial q_{0,i}} \, .
+\end{equation}
+Considering the evolution of ${\bf q}$, we obtain the following equation for $D$
+\begin{equation}
+  \frac{d\mathbb{D}}{dt} = \mathbb{T}\mathbb{D}
+\end{equation}
+with
+\begin{equation}
+  T_{ij} \equiv \frac{\partial F_i}{\partial q_j}\bigg|_{q(t|q_0)} \, .
+\end{equation}
+We immediately see that
+\begin{equation}
+  \frac{d}{dt}\ln\mathrm{det}D = \mathrm{Tr}T \, .
+\end{equation}
+In particular, for a Hamiltonian system, we have
+\begin{equation}
+  T_{ij} = J_{ik}\frac{\partial^2H}{\partial q_k\partial q_j} \qquad \mathbb{J} = \left[\begin{array}{cc} 0 & \mathbb{I} \\ -\mathbb{I} & 0 \end{array}\right]
+\end{equation}
+from which we immediately obtain $\mathrm{Tr}T = 0$ as long as $\partial_{xp}H = \partial_{px}H$ for any pair of conjugate positions and momenta $x$ and $p$.
+
+In the general case, it is therefore convenient to decompose $D_{ij} = e^{\zeta / N}\tilde{D}_{ij}$ with $\mathrm{det}\tilde{D} = 1$ and $\bar{T}_{ij} = T_ij - \frac{\mathrm{Tr}T}{N}\delta_{ij}$ so that
+\begin{align}
+  \dot{\zeta} &= \mathrm{Tr}T \\
+  \dot{\tilde{D}}_{ij} &= \bar{T}_{il}\tilde{D}_{lj} \, .
+\end{align}
+
+In some cases, it is also of interest to separate the evolution of ${\bf \delta}$ into a component along the background trajectory, and the components transverse to it.
+
+\section{Time Evolution of Probability Distributions}
+The probability distribution on phase space at a given time $t$ is given by
+\begin{align}
+  P({\bf q}_f,t) &= \int d{\bf q}_0 P({\bf q}_0,t_0)\delta({\bf q}_f-{\bf q}(t|{\bf q}_0)) \\
+                 &= \int d{\bf q}_0 P({\bf q}_0,t_0)\left|\frac{\partial{\bf q}}{\partial{\bf q}_0}\right|^{-1}\sum_i \delta({\bf q}_0-\xi_i)
+\end{align}
+where $\xi_i$ are the solutions to ${\bf q}(t|{\bf q}_0) = {\bf q}_f$ and we have assumed this set of solutions is discrete.
+
+If we have a collection of operators acting on phase space $\mathcal{O}_i({\bf q}_f)$, $i=1,\dots,m$, then their probability distribution at any time $t$ can be obtained from
+\begin{equation}
+  P({\bf \theta}_f,t) = \int d{\bf q}_f\delta({\bf \theta}_f - {\bf \theta}({\bf q}_f))P({\bf q}_f,t) \, .
+\end{equation}
+The $\delta$-function constraints specify a $n-m$ dimensional hypersurface (assuming $m < n$).
+It is therefore convenient to define new coordinates consisting of the $m$ observables $\theta_i$ and $n-m$ coordinates $\vartheta_j$ along the constant $\theta$ hypersurfaces.
+At any given point, the normals to the surface
+\begin{equation}
+  N^{(i)} = \nabla_{q_f}\theta_i
+\end{equation}
+give the direction of change of the new coordinates $\theta$ in terms of the old coordinates ${\bf q}_f$.
+Meanwhile, the tangent vectors $\nabla_{q_f}\vartheta_j$ for the $\vartheta$ coordinates satisfy
+\begin{equation}
+  T^{(i)}\cdot N^{(j)} = 0 \, .
+\end{equation}
+We can thus rewrite the probability distribution as
+\begin{equation}
+  P(\theta_f,t) = \int d\vartheta \mathcal{J}^{-1}|_{\theta_f}\mathcal{P}({\bf q}_f,t)
+\end{equation}
+where the Jacobian determinant $\mathcal{J}$ is given by
+\begin{equation}
+  \mathcal{J} = \left|\begin{array}{cccccc}N^{(1)} & \dots & N^{(m)} & T^{(1)} & \dots & T^{(n-m)}\end{array}\right| \, .
+\end{equation}
+{\bf There must be a better way to write this.  Make sure to add all the sums, etc. in}
+
+\end{document}

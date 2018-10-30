@@ -82,7 +82,7 @@ For a Hamiltonian system expressed in terms of a canonical set of phase space co
 \end{equation}
 so we see the tidal tensor is closely related to the Hessian of the Hamiltonian function in canonical coordinate space
 \begin{equation}
-  T_{ij} = J_{ik} \frac{\partial \mathcal{H}}{\partial q_k\partial q_j} \qquad J = \left[\begin{array}{cc} 0 & \mathbb{I} \\ \mathbb{I} & 0 \end{array}\right]
+  T_{ij} = J_{ik} \frac{\partial \mathcal{H}}{\partial q_k\partial q_j} \qquad J = \left[\begin{array}{cc} 0 & \mathbb{I} \\ -\mathbb{I} & 0 \end{array}\right]
 \end{equation}
 Using the identity $\ln\mathrm{det}D = \mathrm{Tr}\ln D$, is is straightforward to see that the determinant of $D$ is time-independent provided $D$ is invertible initially.
 This just corresponds to the preservation of phase-space volume by the Hamiltonian flow.
@@ -109,4 +109,5 @@ Several regimes to consider
 \item Classical decoupled trajectories with no noise term.  After inflation ends, but before onset of strong inhomogeneities from preheating.
 \item Post-inflation can extend the decoupled trajectories approximation into the subhorizon regime, in the limit that the zero mode is unstable (and continuity for k small, so those modes are also unstable)
 \item Fully mode-mode coupled inhomogeneous evolution.
+
 \end{itemize}
